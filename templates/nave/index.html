@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+
+
+<br>
+
+<a href="{{url_for('create')}}" class="btn btn-success">
+    Ingresar nave
+</a>
+<br>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo de nave</th>
+                <th>Pais</th>
+                <th>Año lanzado</th>
+                <th>Año retirado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nave in nave %}
+            <tr>
+                <td>{{nave[1]}}</td>
+                <td>{{nave[2]}}</td>
+                <td>{{nave[3]}}</td>
+                <td>{{nave[4]}}</td>
+                <td>{{nave[5]}}</td>
+                <td> 
+                    <a class="btn btn-warning" href="/edit/{{nave[0]}}">Editar</a> | 
+                    <a onclick="return confirm('¿Realmente quieres eliminar este registro?')" class="btn btn-danger" href="/destroy/{{nave[0]}}">Eliminar</a>
+                </td>
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+    </table>
+{% include 'footer.html' %}
